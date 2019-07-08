@@ -2,30 +2,30 @@
 	<view class="content">
 		<image class="logo" src="/static/logo.png"></image>
 		<text class="payment-text" @click="togglePayment()">显示支付弹窗</text>
-		<best-payment-password :show="payFlag" :value="paymentPwd" digits="6" @submit="checkPwd" @cancel="togglePayment"></best-payment-password>
+		<best-payment-password :show="payFlag" :forget="true" :value="paymentPwd" digits="6" @submit="checkPwd" @cancel="togglePayment"></best-payment-password>
 	</view>
 </template>
 
 <script>
-	import BestPaymentPassword from '../../components/best-payment-password/best-payment-password.vue'
+	import bestPaymentPassword from '../../components/best-payment-password/best-payment-password.vue'
 	export default {
 		data() {
 			return {
 				payFlag: false,
-				paymentPwd: ''//可以写默认值
+				paymentPwd: '' //可以写默认值
 			}
 		},
-		components:{
-			BestPaymentPassword
+		components: {
+			bestPaymentPassword
 		},
 		onLoad() {
 
 		},
 		methods: {
-			togglePayment(){
+			togglePayment() {
 				this.payFlag = !this.payFlag;
 			},
-			checkPwd:function(e){
+			checkPwd: function(e) {
 				console.log(e)
 				// 这里是写验证密码的业务逻辑,比如密码错误可以在这边清空
 				this.paymentPwd = '';
